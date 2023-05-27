@@ -18,9 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', [
+        "name" => "Johan",
+        "email" => "johan@jmail.com",
+        "image" => "botol.jpg"
+    ]);
 });
 
 Route::get('/blog', function () {
-    return view('post');
+    return view('posts');
 });
