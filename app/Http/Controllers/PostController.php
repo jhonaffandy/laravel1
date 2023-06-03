@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\M_post;
+// use App\Models\M_post;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -11,15 +12,15 @@ class PostController extends Controller
     {
         return view('posts', [
             "title" => "Posts",
-            "posts" => M_post::all(),
+            "posts" => Post::all(),
         ]);
     }
 
-    public function show($slug)
+    public function show(Post $post)
     {
         return view('post', [
             "title" => "Single Post",
-            "post" => M_post::find($slug),
+            "post" => $post,
         ]);
     }
 }
