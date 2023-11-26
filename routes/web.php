@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\PostController;
-use App\Models\Category;
 use App\Models\M_post;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Routing\Route as RoutingRoute;
 
 /*
@@ -49,3 +51,5 @@ Route::get('/categories/{category:slug}', function (Category $category) {
         'category' => $category->name
     ]);
 });
+
+Route::get('/authors/{author:username}', [AuthorController::class, 'index']);
