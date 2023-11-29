@@ -8,6 +8,9 @@
 <div class="row mb-3 justify-content-center">
   <div class="col-md-6">
     <form action="/blog">
+      @if (request('category'))
+      <input type="hidden" name="category" value="{{ request('category') }}">
+      @endif
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
         <button class="btn btn-danger" type="submit">Search</button>
@@ -27,10 +30,11 @@
         }}</a></h3>
     <p>
       <small class="text-muted">
-        By. <a href="/authors/{{ $posts[0]->author->username }}" class="text-decoration-none">{{
+        By. <a href="/blog?author={{ $posts[0]->author->username }}" class="text-decoration-none">{{
           $posts[0]->author->name
           }}</a> in
-        <a href="/categories/{{ $posts[0]->category->slug }}" class="text-decoration-none">{{ $posts[0]->category->name
+        <a href="/blog?category={{ $posts[0]->category->slug }}" class="text-decoration-none">{{
+          $posts[0]->category->name
           }}</a> {{ $posts[0]->created_at->diffForHumans() }}
       </small>
     </p>
@@ -45,14 +49,15 @@
     <div class="col-sm-4 mb-3">
       <div class="card">
         <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, .5)">
-          <a href="/categories/{{ $item->category->slug }}"
+          <a href="/blog?category={{ $item->category->slug }}"
             class="text-decoration-none text-white">{{$item->category->name }}</a>
         </div>
         <img src="https://source.unsplash.com/500x500?{{ $item->category->name }}" class="card-img-top"
           alt="{{ $item->category->name }}">
         <div class="card-body">
           <h5 class="card-title">{{ $item->title }}</h5>
-          <p>By. <a href="/authors/{{ $item->author->username }}" class="text-decoration-none">{{ $item->author->name
+          <p>By. <a href="/blog?author={{ $item->author->username }}" class="text-decoration-none">{{
+              $item->author->name
               }}</a>
           </p>
           <p class="card-text">{{ $item->excerpt }}</p>
