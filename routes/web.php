@@ -1,12 +1,10 @@
 <?php
 
-use App\Models\M_post;
 use App\Models\Category;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthorController;
-use Illuminate\Routing\Route as RoutingRoute;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +34,16 @@ Route::get('/about', function () {
     ]);
 });
 
+Route::get('/about/about', function () {
+    return view('about', [
+        "title" => "About",
+        "active" => 'about',
+        "name" => "Johan",
+        "email" => "johan@jmail.com",
+        "image" => "botol.jpg"
+    ]);
+});
+
 Route::get('/blog', [PostController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
@@ -56,3 +64,5 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 });
 
 Route::get('/authors/{author:username}', [AuthorController::class, 'index']);
+
+Route::get('login', [LoginController::class, 'index']);
