@@ -20,12 +20,17 @@
           <a class="nav-link {{ ($active === 'categories') ? 'active' :'' }}" href="/categories">Categories</a>
         </li>
       </ul>
+
       <ul class="navbar-nav">
+        @auth
+
+        @else
         <li class="nav-item">
           <a href="/login" class="nav-link {{ ($active === 'login')? 'active' :'' }}"><i
               class="bi bi-box-arrow-in-right mx-1"></i>Login</a>
         </li>
       </ul>
+      @endauth
       {{-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
