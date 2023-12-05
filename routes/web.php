@@ -75,4 +75,4 @@ Route::get('register', [RegisterController::class, 'index'])->middleware('guest'
 
 Route::post('register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', fn () => view('dashboard.index'))->middleware('auth');
