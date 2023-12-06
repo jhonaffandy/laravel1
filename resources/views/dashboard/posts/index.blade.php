@@ -23,7 +23,7 @@
                 <td>{{ $item->title }}</td>
                 <td>{{ $item->category->name }}</td>
                 <td>
-                    <a href="/dashboard/posts/{{ $item->id }}" class="badge bg-info"><span
+                    <a href="/dashboard/posts/{{ $item->slug }}" class="badge bg-info"><span
                             data-feather='eye'></span></a>
                     <a href="/dashboard/posts/{{ $item->id }}" class="badge bg-warning"><span
                             data-feather='edit'></span></a>
