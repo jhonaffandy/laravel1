@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug" disabled readonly>
+            <input type="text" class="form-control" id="slug" name="slug" readonly>
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
