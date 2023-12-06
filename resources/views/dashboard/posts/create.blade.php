@@ -11,24 +11,44 @@
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" required autofocus
+                name="title" value="{{ old('title') }}">
+            @error('title')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug" readonly>
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" required name="slug"
+                readonly value="{{ old('slug') }}">
+            @error('slug')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <select class="form-select" name="category_id">
+            <select class="form-select" required name="category_id">
                 @foreach ($categories as $item)
+                @if (old('category_id') == $item->id)
+                <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                @else
                 <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endif
                 @endforeach
             </select>
         </div>
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <input id="body" type="hidden" name="body">
+
+            <input id="body" type="hidden" required name="body" value="{{ old('body') }}">
             <trix-editor input="body"></trix-editor>
+            @error('body')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Create Posts</button>
     </form>
