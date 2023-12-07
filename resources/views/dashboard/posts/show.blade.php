@@ -9,7 +9,8 @@
 
             <a href="/dashboard/posts" class="btn btn-sm btn-success"><span data-feather="arrow-left"></span> Back to my
                 posts</a>
-            <a href="" class="btn btn-sm btn-warning"><span data-feather="edit"></span> Edit</a>
+            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-sm btn-warning"><span
+                    data-feather="edit"></span> Edit</a>
             <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
                 @method('delete')
                 @csrf
