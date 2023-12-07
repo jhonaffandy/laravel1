@@ -35,7 +35,7 @@
                 <td>
                     <a href="/dashboard/posts/{{ $item->slug }}" class="badge bg-info"><span
                             data-feather='eye'></span></a>
-                    <a href="/dashboard/posts/{{ $item->slug }}" class="badge bg-warning"><span
+                    <a href="/dashboard/posts/{{ $item->slug }}/edit" class="badge bg-warning"><span
                             data-feather='edit'></span></a>
                     <form action="/dashboard/posts/{{ $item->slug }}" method="POST" class="d-inline">
                         @method('delete')
