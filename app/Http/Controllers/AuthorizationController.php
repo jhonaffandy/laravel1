@@ -12,9 +12,6 @@ class AuthorizationController extends Controller
      */
     public function index()
     {
-        if (!auth()->check() || auth()->user()->username !== 'joe.affandy') {
-            abort(403);
-        }
 
         return view('dashboard.categories.index', [
             'categories' => Category::all()
