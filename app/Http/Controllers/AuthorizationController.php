@@ -12,7 +12,9 @@ class AuthorizationController extends Controller
      */
     public function index()
     {
-        return 'test ya';
+        return view('dashboard.categories.index', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
