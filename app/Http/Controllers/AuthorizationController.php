@@ -12,7 +12,7 @@ class AuthorizationController extends Controller
      */
     public function index()
     {
-        //
+        return 'test ya';
     }
 
     /**
